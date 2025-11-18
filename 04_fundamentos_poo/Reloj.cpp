@@ -1,4 +1,5 @@
 #include <iostream>
+#include "Fecha.cpp"
 
 using namespace std;
 
@@ -11,7 +12,7 @@ class Reloj {
     // protected: (solo esta clase y las clases hijas tienen acceso)
     private: // Solo esta clase tiene acceso
         int segundos;
-        string fecha;
+        Fecha fecha; // 2025-01-01
 
         /****************************************************************
             Métodos privados auxiliares para funcionamiento interno
@@ -27,6 +28,20 @@ class Reloj {
         }
      
     public:  // Todos tienen acceso
+        /*********************
+            Constructores
+        **********************/
+        // Constructor por omisión
+        Reloj() {
+            segundos = (17 * 3600);
+            fecha = "2025-01-01";
+        }
+
+        // Constructor por parámetros
+        Reloj(int _segundos, string _fecha) {
+            segundos = _segundos;
+            fecha = _fecha;
+        }
 
         /**********************************************************
             Getters y setters (funcionalidad / comportamiento)
@@ -62,7 +77,7 @@ class Reloj {
 
             cout << "Hora: " << dos_digitos(horas) << ":" << dos_digitos(minutos) 
                 << ":" << dos_digitos(segs) << endl;
-            cout << "Fecha: " << fecha << endl;
+            cout << "Fecha: " << fecha.muestra_fecha() << endl;
         }
 };
 
