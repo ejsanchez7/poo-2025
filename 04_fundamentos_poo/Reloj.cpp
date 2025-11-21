@@ -28,34 +28,40 @@ class Reloj {
         }
      
     public:  // Todos tienen acceso
+
         /*********************
             Constructores
         **********************/
         // Constructor por omisión
         Reloj() {
             segundos = (17 * 3600);
-            fecha = "2025-01-01";
         }
 
         // Constructor por parámetros
-        Reloj(int _segundos, string _fecha) {
+        Reloj(int _segundos, int dia, int mes, int anio) {
             segundos = _segundos;
-            fecha = _fecha;
+            fecha = Fecha(dia, mes, anio);
         }
 
         /**********************************************************
             Getters y setters (funcionalidad / comportamiento)
         ***********************************************************/
         // Getters (devuelven el valor de los atributos)
-        string get_fecha() {
+        Fecha get_fecha() {
             return fecha;
         }
 
         // Setters (modifican los valores de los atributos)
-        void set_fecha(string _fecha) {
-            fecha = _fecha;
+        void set_fecha(int dia, int mes, int anio) {
+            if((dia > 0 && dia <= 31) && (mes > 0 && mes <= 12)){ 
+                fecha = Fecha(dia, mes, anio);
+            }
+            else{
+                cout << "los datos son incorrectos";
+        
+            }
         }
-
+        
         /********************************************************
             Métodos comunes (funcionalidad / comportamiento)
         *********************************************************/
@@ -77,7 +83,9 @@ class Reloj {
 
             cout << "Hora: " << dos_digitos(horas) << ":" << dos_digitos(minutos) 
                 << ":" << dos_digitos(segs) << endl;
-            cout << "Fecha: " << fecha.muestra_fecha() << endl;
+            cout << "Fecha: ";
+            fecha.muestra_fecha();
+            cout  << endl;
         }
 };
 

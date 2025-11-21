@@ -1,5 +1,6 @@
 #include <iostream>
 #include "Reloj.cpp"
+#include "Fecha.cpp"
 
 using namespace std;
 
@@ -7,7 +8,7 @@ int main() {
 
     // Creación de objeto
     Reloj miReloj;
-    Reloj rolex((3 * 3600), "25/12/2025");
+    Reloj rolex((3 * 3600), 25, 12, 2025);
 
     // Invocar métodos
     miReloj.muestraReloj();
@@ -16,7 +17,7 @@ int main() {
 
     // Modificación de atributos  
     miReloj.iniciar(1, 10, 0);
-    miReloj.set_fecha("14/11/2025");
+    miReloj.set_fecha(14, 11, 2025);
 
     cout << "----------------------" << endl;
     miReloj.muestraReloj();
