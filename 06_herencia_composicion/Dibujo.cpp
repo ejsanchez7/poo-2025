@@ -2,6 +2,7 @@
 #include "Figura.cpp"
 #include "Circulo.cpp"
 #include "Rectangulo.cpp"
+#include "Demo.cpp"
 #include <vector>
 
 using namespace std;
@@ -9,6 +10,7 @@ using namespace std;
 class Dibujo {
     private:
         vector<Figura*> listaFiguras;
+        vector<Demo*> listaDemo;
         string nombre;
         string autor;
 
@@ -53,9 +55,24 @@ class Dibujo {
             listaFiguras.push_back(rectangulo);
         }
 
+        void agregarDemo(Demo &demo) {
+            listaDemo.push_back(&demo);
+        }
+
         void dibujar(){
             for(int i = 0; i < listaFiguras.size(); i++){
-                listaFiguras[i].dibujar();
+                //(*listaFiguras[i]) objeto Figura
+                //listaFiguras[i] localidad de memoria
+                //(*listaFiguras[i]).dibujar();
+                listaFiguras[i]->dibujar();
+                cout << endl;
+            }
+        }
+
+        void mostrarDemo() {
+            for(int i = 0; i < listaDemo.size(); i++){
+                listaDemo[i]->mostrar();
+                cout << endl;
             }
         }
 };
